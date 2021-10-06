@@ -11,10 +11,12 @@ function [U,S,V] = tsvd_tensor(A)
   V = zeros(n2,n2,n3);
         
   halfn3 = ceil((n3+1)/2);
+  
   for i = 1 : halfn3
     [U(:,:,i),S(:,:,i),V(:,:,i)] = svd(A(:,:,i));
   endfor
-  for i = halfn3+1 : n3
+  
+  for i = (halfn3+1) : n3
      U(:,:,i) = conj(U(:,:,n3+2-i));
      V(:,:,i) = conj(V(:,:,n3+2-i));
      S(:,:,i) = S(:,:,n3+2-i);
