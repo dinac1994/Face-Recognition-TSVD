@@ -5,13 +5,13 @@ function result = tsvd_I(training_tensor, test_photograph)
   result = 0;
   mean_image = zeros(size(test_photograph, 1), size(test_photograph, 2));
   
-  for i = 1:size(training_tensor, 2)
+  for i = 1 : size(training_tensor, 2)
     mean_image += squeeze(training_tensor(:,i,:));
   endfor
   
   mean_image = mean_image / size(training_tensor, 2);
   
-  for i = 1:size(training_tensor, 2)
+  for i = 1 : size(training_tensor, 2)
     training_tensor(:,i,:) -= twist(mean_image);
   endfor
 
@@ -22,7 +22,7 @@ function result = tsvd_I(training_tensor, test_photograph)
   
   min_distance = 0;
   
-  for i = 1:size(training_tensor, 2)
+  for i = 1 : size(training_tensor, 2)
     dif_norm = norm(squeeze((B) - C(:,i,:)), 'fro');
     if i == 1
       min_distance = dif_norm;
